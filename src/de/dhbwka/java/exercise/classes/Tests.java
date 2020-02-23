@@ -33,6 +33,15 @@ public class Tests {
         System.out.println("Lotto:");
         //lotto();
         System.out.println();
+
+        System.out.println("MasterMind:");
+        //masterMind();
+        System.out.println();
+    }
+
+    private static void masterMind() {
+        MasterMind mm = new MasterMind();
+        mm.play();
     }
 
     private static void lotto() {
