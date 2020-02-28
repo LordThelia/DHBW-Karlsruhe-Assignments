@@ -62,8 +62,8 @@ public class Lotto {
     private int getCorrect() {
         int rightGuesses = 0;
 
-        for (int i = 0; i < amountBalls; ++i) {
-            for (int k = 0; k < amountBalls; ++k) {
+        for (int i = 0; i < amountBalls - 1; ++i) {
+            for (int k = 0; k < amountBalls - 1; ++k) {
                 if (tip[i] == drawnNumbers[k]) {
                     ++rightGuesses;
                 }
