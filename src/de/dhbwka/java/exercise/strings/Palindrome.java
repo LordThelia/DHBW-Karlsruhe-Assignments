@@ -1,5 +1,6 @@
 package de.dhbwka.java.exercise.strings;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Palindrome {
@@ -7,14 +8,11 @@ public class Palindrome {
         Scanner sc = new Scanner(System.in);
         System.out.print("Word: ");
         String word = sc.nextLine();
-        String reversed = "";
+        StringBuilder sb = new StringBuilder(word);
+        StringBuilder rev = new StringBuilder(word).reverse();
 
-        for(int i = word.length() - 1; i >= 0; --i) {
-            reversed += word.charAt(i);
-        }
-
-        System.out.println("Reversed: " + reversed);
-        System.out.println("Palindrome: " + word.equalsIgnoreCase(reversed));
+        System.out.println("Reversed: " + rev);
+        System.out.println("Palindrome: " + word.equalsIgnoreCase(rev.toString()));
 
         sc.close();
     }
