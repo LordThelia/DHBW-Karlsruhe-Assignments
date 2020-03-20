@@ -18,7 +18,7 @@ public class Board {
 
         // Single Bull, Bullseye
         this.fields[61] = new Field("25", 25, false);
-        this.fields[62] = new Field("50", 50, true);
+        this.fields[62] = new Field("BULL", 50, true);
     }
 
     public Field parseField(String label) {
