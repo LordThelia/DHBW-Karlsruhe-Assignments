@@ -1,18 +1,17 @@
 package de.dhbwka.java.exams.darts;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Game {
     private Board board;
     private Player[] players;
-    private HashMap<Integer, String> checkouts;
+    private String[] checkouts;
 
     public Game(Board board, Player[] players) {
         this.board = board;
         this.players = players;
-        this.checkouts = new HashMap<Integer, String>();
+        this.checkouts = new String[171];
     }
 
     public void start() {
@@ -30,11 +29,10 @@ public class Game {
             System.out.println("Player: " + this.players[player].getName() + ", " + remainingPoints + " points remaining.");
 
             if(remainingPoints <= 170) {
-                System.out.println("Possible finish combination: " + this.checkouts.get(remainingPoints));
+                System.out.println("Possible finish combination: " + this.checkouts[remainingPoints - 1]);
             }
 
             System.out.print("Enter visit: ");
-            System.out.flush();
             String playerThrow = sc.nextLine();
             String[] fieldsHitted = playerThrow.split( " " );
             Field[] fields = new Field[fieldsHitted.length];
@@ -42,6 +40,7 @@ public class Game {
             for(int i = 0; i < fields.length; ++i) {
                 fields[i] = this.board.parseField(fieldsHitted[i]);
             }
+
             Visit playerVisit = new Visit(fields);
             this.players[player].addVisit(playerVisit);
             System.out.println("Scored: " + playerVisit.getValue());
@@ -55,10 +54,7 @@ public class Game {
             System.out.println("Game shot and the leg, " + this.players[player].getName());
 
             //Highscore
-            File path = new File(System.getProperty("user.home") + "\\Documents\\Java");
-            path.mkdir();
-
-            try (PrintWriter pw = new PrintWriter(new FileWriter(path + "\\highscore.txt",true))) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter("highscore.txt",true))) {
                 pw.println(this.players[player].getName() + " won with " + this.players[player].getCountDartsThrown() + " darts.");
             } catch (Exception e) {
                 System.err.println("Error: " + e.getMessage());
@@ -77,9 +73,9 @@ public class Game {
 
         if(checkouts.exists()) {
             try (BufferedReader br = new BufferedReader(new FileReader(checkouts))) {
-                int row = 1;
+                int row = 0;
                 while (br.ready()) {
-                    this.checkouts.put(row, br.readLine());
+                    this.checkouts[row] = br.readLine();
                     ++row;
                 }
             } catch (IOException e) {
