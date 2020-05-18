@@ -22,7 +22,7 @@ public class ComponentFrame extends JFrame {
         JButton button = new JButton("JButton");
         JToggleButton toggleButton = new JToggleButton("JToggleButton");
         JCheckBox checkBox = new JCheckBox("JCheckBox");
-        JComboBox comboBox = new JComboBox();
+        JComboBox<String> comboBox = new JComboBox<String>();
 
         comboBox.addItem("1. Item");
         comboBox.addItem("2. Item");
