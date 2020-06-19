@@ -1,4 +1,4 @@
-package de.dhbwka.java.exercise.ui.events;
+package de.dhbwka.java.exercise.ui.event;
 
 import javax.swing.*;
 import java.awt.*;
