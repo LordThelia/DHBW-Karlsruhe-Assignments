@@ -89,7 +89,6 @@ public class Game implements Runnable {
 
             for(int playerIndex = 0; playerIndex < this.sheets.size(); ++playerIndex) {
                 String answer = answers[playerIndex];
-                int points = playerPoints[playerIndex].get(catIndex);
                 boolean isSimilar = false;
                 boolean isAllNull = true;
 
