@@ -37,15 +37,13 @@ public class Auktion {
     }
 
     public boolean gebotAbgeben(Gebot g) {
-        boolean result = true;
+        if(g.getMaxPrice() < (this.price + increment)) {
+            return false;
+        }
 
         if(this.price == 0.0) {
             this.price = increment;
             this.bid = g;
-        }
-
-        if(g.getMaxPrice() <= (this.price + increment)) {
-            result = false;
         }
 
         if(g.getBidder() == this.bid.getBidder()) {
@@ -61,6 +59,6 @@ public class Auktion {
             }
         }
 
-        return result;
+        return true;
     }
 }
